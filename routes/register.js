@@ -20,11 +20,11 @@ router.post('/', (req, res) => {
           db.one("INSERT INTO users (name, username, hash) VALUES ($1, $2, $3) RETURNING id;", [name, username, hash])
           .then(results => {
             const token = jwt.sign({user: username, id: results.id}, JWT_SECRET)
-            res.status(200).json({"token": token, "id": results.id})
+            res.status(200).json({token: token, id: results.id})
           })
           .catch(error => {
             console.log(error)
-            res.status(500).json({"message": "Error creating user."})
+            res.status(500).json({message: "Error creating user."})
           })
         })
         .catch(error => {

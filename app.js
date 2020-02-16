@@ -21,11 +21,13 @@ const registerRouter = require('./routes/register')
 
 app.use(cors())
 app.use(express.json())
-app.use('/register', registerRouter)
-
-
+//app.use('/register', registerRouter)
+ 
+app.get('/', (req, res) => {
+  res.send("HELLO")
+})
 
 app.listen(PORT, () => {
-  console.log('Bismillahi Rahmani Rahim....')
+  console.log('Running on PORT ', PORT)
 })
 
