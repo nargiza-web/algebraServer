@@ -24,8 +24,6 @@ const user = require('./models/user')
 const registerRouter = require('./routes/register')
 const contactusRouter = require('./routes/contact')
 
-
-
 //connect to the database
 mongoose.connect(DATABASE_URL, {useNewUrlParser: true}, (error) => {
   if(error) {
