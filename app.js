@@ -17,12 +17,14 @@ const PORT = process.env.PORT || 8080;
 const DATABASE_URL = process.env.DATABASE_URL;
 //const db = pgp(DATABASE_URL)
 //const SALT_ROUNDS = 10
-const user = require('./models/user')
-const registerRouter = require('./routes/register')
-
-
 app.use(cors())
 app.use(express.json())
+
+const user = require('./models/user')
+const registerRouter = require('./routes/register')
+const contactusRouter = require('./routes/contact')
+
+
 
 //connect to the database
 mongoose.connect(DATABASE_URL, {useNewUrlParser: true}, (error) => {
@@ -35,12 +37,12 @@ mongoose.connect(DATABASE_URL, {useNewUrlParser: true}, (error) => {
 
 
 app.use('/register', registerRouter)
- 
+app.use('/contactus', contactusRouter)
 app.get('/', (req, res) => {
   res.send("HELLO")
 })
 
 app.listen(3011, () => {
-  console.log('Running on PORT ', PORT)
+  console.log('Running on PORT 3011')
 })
 
